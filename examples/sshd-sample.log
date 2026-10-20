@@ -1,0 +1,10 @@
+Oct 20 21:40:19 labhost sshd[2211]: Failed password for invalid user admin from 192.0.2.66 port 51234 ssh2
+Oct 20 21:40:19 labhost sshd[2215]: Failed password for root from 192.0.2.66 port 51240 ssh2
+Oct 20 21:40:19 labhost sshd[2219]: Invalid user guest from 203.0.113.9 port 51300
+Oct 20 21:40:19 labhost sshd[2219]: Connection closed by invalid user guest 203.0.113.9 port 51300 [preauth]
+Oct 20 21:40:19 labhost sshd[2240]: Failed password for invalid user test from 198.51.100.23 port 51401 ssh2
+Oct 20 21:40:19 labhost sshd[2244]: Failed password for invalid user oracle from 192.0.2.66 port 51455 ssh2
+Oct 20 21:40:19 labhost sshd[2250]: Failed password for root from 198.51.100.23 port 51502 ssh2
+Oct 20 21:40:19 labhost sshd[2260]: Accepted password for paul from 192.168.1.50 port 51600 ssh2
+Oct 20 21:40:19 labhost sshd[2261]: Accepted publickey for paul from 192.168.1.50 port 51601 ssh2: RSA SHA256:AAAAB3NzaC1yc2EAAAADAQABAAABAQC7
+Oct 20 21:40:19 labhost systemd-logind[812]: New session 42 of user paul.

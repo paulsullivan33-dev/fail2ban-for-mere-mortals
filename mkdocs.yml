@@ -1,0 +1,26 @@
+site_name: Fail2Ban for Mere Mortals
+site_description: Plain-language fail2ban — the log-watching bouncer that reads service logs and bans repeat offenders, jails, filters and actions explained, a first ban watched end to end in a safe lab, and the firewall itself checked afterwards.
+site_url: https://paulsullivan33-dev.github.io/fail2ban-for-mere-mortals/
+
+# Guides live at the repo root (nice for GitHub browsing).
+# The deploy workflow copies them into docs/ before building.
+theme:
+  name: material
+
+nav:
+  - Home: index.md
+  - What Fail2Ban Is: what-fail2ban-is.md
+  - Meet Fail2Ban: meet-fail2ban.md
+  - Anatomy of a Jail: anatomy-of-a-jail.md
+  - Your First Ban: your-first-ban.md
+  - Don't Ban Yourself: dont-ban-yourself.md
+  - The sshd Jail: the-sshd-jail.md
+  - Filters and failregex: filters-and-failregex.md
+  - Actions: actions.md
+  - The Client: the-client.md
+  - Repeat Offenders: repeat-offenders.md
+  - Other Jails: other-jails.md
+  - What Fail2Ban Can't Do: what-fail2ban-cant-do.md
+  - Troubleshooting: troubleshooting.md
+  - Glossary: glossary.md
+  - Writing Criteria: criteria.md

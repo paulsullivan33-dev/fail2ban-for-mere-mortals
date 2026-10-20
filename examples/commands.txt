@@ -1,0 +1,42 @@
+Fail2Ban for Mere Mortals — the working commands from the guide.
+All of these ran against the lab server; the lab files are the
+other files in this directory.
+
+CONFIGURATION
+    fail2ban-client -t                      rehearse the config; names file and line on error
+    cat /etc/fail2ban/jail.d/defaults-debian.conf
+                                            what Ubuntu pre-decided (nftables, systemd, sshd on)
+
+STATUS
+    systemctl start fail2ban                start the server (the client alone can do nothing)
+    fail2ban-client ping                    "Server replied: pong", or the socket error
+    fail2ban-client status                  every jail, by name
+    fail2ban-client status labauth          one jail: filter state, bans, its file list
+    fail2ban-client status sshd             a journal jail: its Journal matches line
+    fail2ban-client banned                  one roll-up line of every jail's banned list
+
+ASK A JAIL ITS EFFECTIVE SETTINGS
+    fail2ban-client get labauth maxretry    3
+    fail2ban-client get labauth findtime    600   (seconds, whatever the config wrote)
+    fail2ban-client get labauth bantime     120
+    fail2ban-client get labauth ignoreip    the staff list, as the server holds it
+    fail2ban-client get sshd actions        nftables on Ubuntu
+
+ORDERS
+    fail2ban-client set labauth unbanip 192.0.2.66    release an address (answers: 1)
+    fail2ban-client set labauth banip 203.0.113.200   ban by hand (action record shows failures=0)
+    fail2ban-client reload                  re-read config (run -t first, always)
+
+REHEARSE A FILTER
+    fail2ban-regex sshd-sample.log /etc/fail2ban/filter.d/sshd.conf
+                                            matched / ignored / missed, per pattern
+
+VERIFY A BAN AT THE FIREWALL (chapter 8's fourth witness)
+    nft list ruleset                        the banned address should sit in the jail's set
+    grep ERROR /var/log/fail2ban.log        what the action said if it could not run
+    grep NOTICE /var/log/fail2ban.log       every Ban and Unban, timestamped
+
+THE LAB ITSELF
+    append-failures.sh lab-auth.log 192.0.2.66 3 admin
+                                            append 3 sshd-style failures (maxretry is 3)
+    cat bans.log                            the lab action's own record (written into the lab dir)

@@ -1,0 +1,36 @@
+# Lab configuration for the fail2ban Mere Mortals guide.
+# This whole file is the lab's. Deleting it restores the stock setup.
+[DEFAULT]
+# 192.0.2.99 knocks in the lab too, and must never be banned:
+# the whitelist lesson, proven in transcript 06.
+ignoreip = 127.0.0.1/8 ::1 192.0.2.99
+bantime  = 2m
+findtime = 10m
+maxretry = 3
+# Repeat offenders wait twice as long each time.
+bantime.increment = true
+bantime.factor = 2
+
+[labauth]
+enabled = true
+backend = polling
+filter  = sshd
+logpath = /home/hatch/workspace/fail2ban-lab/work/lab-auth.log
+port    = ssh
+action  = lab-banfile
+
+[labnft]
+enabled = true
+backend = polling
+filter  = sshd
+logpath = /home/hatch/workspace/fail2ban-lab/work/lab-nft.log
+port    = ssh
+# No action override: /etc/fail2ban/jail.d/defaults-debian.conf sets
+# banaction = nftables on Ubuntu, so this jail bans for real --
+# in an nftables set holding documentation addresses only.
+
+[recidive]
+enabled  = true
+backend  = polling
+action   = lab-banfile
+maxretry = 2
